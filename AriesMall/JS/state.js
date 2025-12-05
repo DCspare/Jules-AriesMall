@@ -24,7 +24,7 @@ const supabaseProductById = async (productId) => {
         .select('*')
         .eq('id', productId)
         .single();
-    
+
     if (error) {
         // This is expected if the product ID is old or invalid. Log as a warning.
         console.warn(`Product ID ${productId} not found in Supabase:`, error.message);
@@ -51,7 +51,7 @@ const fetchUserCart = async (user) => {
   const detailedItems = await Promise.all(
     cartItems.map(async (item) => {
       // UPDATED to use Supabase Product Fetcher
-      const product = await supabaseProductById(item.product_id); 
+      const product = await supabaseProductById(item.product_id);
       return product ? { ...product, quantity: item.quantity } : null;
     })
   );
@@ -140,7 +140,6 @@ export const initializeAuth = () => {
       if (newSession?.user?.id !== authState.user?.id) {
         authState.session = newSession;
         authState.user = newSession?.user ?? null;
-        console.log("Auth state changed via listener:", authState);
 
         if (newSession) {
           clearGuestData();
@@ -263,4 +262,3 @@ export const toggleWishlist = async (productId) => {
 export const isInWishlist = (productId) =>
   wishlistState.items.includes(productId);
 export const getTotalWishlistItems = () => wishlistState.items.length;
-

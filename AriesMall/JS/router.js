@@ -18,6 +18,7 @@ const routes = {
   "/cart": { path: "../pages/cart.html", initializer: initializeCartPage },
   "/login": { path: "../pages/login.html", initializer: initializeAuthPage },
   "/signup": { path: "../pages/signup.html", initializer: initializeAuthPage },
+  "/checkout": { path: "../pages/checkout.html" }, // Placeholder checkout route
   "/search": {
     path: "../pages/search-results.html",
     initializer: initializeSearchPage,
@@ -75,6 +76,9 @@ export const handleRouteChange = async () => {
       if (route.cleanup) {
         currentPageCleanup = route.cleanup;
       }
+
+      // SEO: Update Title
+      updatePageTitle(path);
 
       if (route.initializer) {
         setTimeout(() => route.initializer(path), 0);
@@ -136,4 +140,38 @@ export const handleRouteChange = async () => {
 
   // 3. If no static or dynamic route matches, show 404
   appContainer.innerHTML = "<h1>404 - Page Not Found</h1>";
+};
+
+// --- HELPER: SEO Title Updater ---
+const updatePageTitle = (path) => {
+  const baseTitle = "Aries Mall - Premium Luxury Shopping";
+  let pageTitle = "";
+
+  switch (path) {
+    case "/":
+      pageTitle = "Home";
+      break;
+    case "/cart":
+      pageTitle = "Your Cart";
+      break;
+    case "/login":
+      pageTitle = "Login";
+      break;
+    case "/signup":
+      pageTitle = "Sign Up";
+      break;
+    case "/checkout":
+      pageTitle = "Checkout";
+      break;
+    default:
+      if (path.startsWith("/category/")) {
+        // Capitalize first letter of slug
+        const slug = path.split("/")[2];
+        pageTitle = slug.charAt(0).toUpperCase() + slug.slice(1);
+      } else if (path.startsWith("/profile")) {
+        pageTitle = "My Account";
+      }
+  }
+
+  document.title = pageTitle ? `${pageTitle} | Aries Mall` : baseTitle;
 };
