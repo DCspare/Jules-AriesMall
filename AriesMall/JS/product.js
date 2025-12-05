@@ -158,6 +158,9 @@ export const initializeProductDetailPage = async (productId) => {
     document.getElementById("product-description").textContent =
       product.description;
 
+    // SEO: Update Title with Product Name
+    document.title = `${product.name} | Aries Mall`;
+
     const mainImage = document.getElementById("product-main-image");
     const mobileCarousel = document.getElementById("mobile-image-carousel");
     const desktopThumbnails = document.getElementById("desktop-thumbnails");

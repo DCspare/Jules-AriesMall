@@ -85,6 +85,14 @@ export const initializeCartPage = () => {
     );
 
     checkoutButton.disabled = cartState.items.length === 0;
+
+    // Remove existing listener to prevent duplicates if re-initialized
+    const newCheckoutBtn = checkoutButton.cloneNode(true);
+    checkoutButton.parentNode.replaceChild(newCheckoutBtn, checkoutButton);
+
+    newCheckoutBtn.addEventListener("click", () => {
+      window.location.hash = "#/checkout";
+    });
   }
   lucide.createIcons();
 };

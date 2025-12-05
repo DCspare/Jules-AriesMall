@@ -20,7 +20,6 @@ try {
 
   // If the check passes, create the client
   supabaseInstance = createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
-  console.log("Supabase client initialized successfully.");
 
 } catch (error) {
   // If the check fails, log the critical error but don't crash the site

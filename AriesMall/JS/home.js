@@ -32,12 +32,11 @@ export const initializeHomePage = async (path) => {
    // --- HERO SLIDER LOGIC (Fixed) ---
   const setupHeroSlider = (slides) => {
     // 1. Select the main container to handle visibility
-    const heroSection = document.getElementById("hero-slider"); 
-    
+    const heroSection = document.getElementById("hero-slider");
+
     // 2. LOGIC FIX: Hide section if no slides, then stop.
     if (!slides || slides.length === 0) {
       if (heroSection) heroSection.style.display = "none";
-      console.log("Hero Slider: No slides found (hidden).");
       return;
     }
 
@@ -396,9 +395,3 @@ export const initializeHomePage = async (path) => {
     if (grid) grid.innerHTML = `<p>Error loading products.</p>`;
   }
 };
-
-
-
-
-
-

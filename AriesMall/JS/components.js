@@ -63,8 +63,8 @@ export const generateProductCardHTML = (product) => {
           <a href="#/product/${product.id}">
             <img src="${imageUrl}" alt="${modelName}" class="product-card-image" loading="lazy" />
           </a>
-          <button class="product-card-fav-btn" 
-                  aria-label="Toggle Wishlist" 
+          <button class="product-card-fav-btn"
+                  aria-label="Toggle Wishlist"
                   data-product-id="${product.id}"
                   data-is-favorite="${isFavorite}">
             <i data-lucide="heart" ${
@@ -123,6 +123,10 @@ export const attachProductCardListeners = (container) => {
   if (!container) return;
 
   const handleWishlistClick = async (e) => {
+    // Prevent default anchor click if inside one (though button is usually above)
+    e.preventDefault();
+    e.stopPropagation();
+
     const button = e.currentTarget;
     const productId = button.dataset.productId;
     const isCurrentlyFavorite = button.dataset.isFavorite === "true";
@@ -130,43 +134,51 @@ export const attachProductCardListeners = (container) => {
     if (!productId) return;
 
     button.disabled = true;
-    button.dataset.isFavorite = (!isCurrentlyFavorite).toString();
-    const icon = button.querySelector("i");
 
+    // Optimistic UI update
+    const icon = button.querySelector("i");
     if (!isCurrentlyFavorite) {
-      icon.dataset.fill = "true";
+      icon.setAttribute("data-fill", "true");
+      icon.style.fill = "currentColor"; // Visual feedback immediately
     } else {
-      delete icon.dataset.fill;
+      icon.removeAttribute("data-fill");
+      icon.style.fill = "none";
     }
 
     await toggleWishlist(productId);
 
+    // Confirm state from store
     const isNowFavorite = isInWishlist(productId);
     button.dataset.isFavorite = isNowFavorite.toString();
 
+    // Re-apply correct visual state based on truth
     if (isNowFavorite) {
+      icon.setAttribute("data-fill", "true");
+      icon.style.fill = "currentColor";
       showToast({
         title: "Wishlist Updated",
         description: "Item added to your favorites.",
-        type: "success",
       });
     } else {
+      icon.removeAttribute("data-fill");
+      icon.style.fill = "none";
       showToast({
         title: "Wishlist Updated",
         description: "Item removed from your favorites.",
-        type: "info",
       });
     }
 
     button.disabled = false;
-    lucide.createIcons({ nodes: [icon] });
   };
 
+  // We attach to the specific buttons, but we can do it via delegation if preferred.
+  // Here we assume this is called AFTER render.
   container.querySelectorAll(".product-card-fav-btn").forEach((button) => {
-    if (!button.dataset.listenerAdded) {
-      button.addEventListener("click", handleWishlistClick);
-      button.dataset.listenerAdded = "true";
-    }
+    // Remove old listeners if any to avoid duplicates
+    const newBtn = button.cloneNode(true);
+    button.parentNode.replaceChild(newBtn, button);
+
+    newBtn.addEventListener("click", handleWishlistClick);
   });
 };
 
