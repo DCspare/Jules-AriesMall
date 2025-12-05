@@ -1,0 +1,116 @@
+<!-- pages/home.html -->
+<!-- This file's content is dynamically injected into the main index.html -->
+
+<!-- ========= HERO SLIDER SECTION ========= -->
+<section id="hero-slider" class="hero-slider-section">
+  <div id="hero-backgrounds" class="hero-backgrounds">
+    <!-- Background images will be populated by JS -->
+  </div>
+  <div class="hero-slider-content-area container">
+    <div id="hero-content-box" class="hero-content-box">
+      <h1 id="hero-title" class="hero-title"></h1>
+      <p id="hero-description" class="hero-description"></p>
+      <a href="#" id="hero-cta-button" class="hero-cta-button"></a>
+    </div>
+  </div>
+</section>
+
+<!-- ========= HERO THUMBNAILS SECTION ========= -->
+<div id="hero-thumbnails" class="hero-thumbnails-container container">
+  <!-- Thumbnails will be populated by JS -->
+</div>
+
+<!-- ========= NEW MOBILE-ONLY PRODUCT BROWSE SECTION ========= -->
+<div id="mobile-product-browse" class="mobile-only">
+  <!-- Electronics Section -->
+  <section class="container product-category-preview">
+    <div class="category-preview-header">
+      <h2>Electronics</h2>
+      <!-- FIX: Updated Link to correct Category Route -->
+      <a href="#/category/electronics" class="see-more-link">
+        See More <i data-lucide="arrow-right" class="icon-sm"></i>
+      </a>
+    </div>
+    <div id="electronics-carousel" class="mobile-product-carousel">
+      <!-- Mobile electronics products rendered here by JS -->
+    </div>
+  </section>
+
+  <!-- Furniture Section -->
+  <section class="container product-category-preview">
+    <div class="category-preview-header">
+      <h2>Furniture</h2>
+      <!-- FIX: Updated Link to correct Category Route -->
+      <a href="#/category/furniture" class="see-more-link">
+        See More <i data-lucide="arrow-right" class="icon-sm"></i>
+      </a>
+    </div>
+    <div id="furniture-carousel" class="mobile-product-carousel">
+      <!-- Mobile furniture products rendered here by JS -->
+    </div>
+  </section>
+</div>
+
+<!-- ========= EXISTING DESKTOP-ONLY PRODUCT BROWSE SECTION ========= -->
+<section id="products" class="product-browse-section container desktop-only">
+  <div class="product-browse-layout">
+    <!-- Filters & Categories Sidebar -->
+    <aside class="product-sidebar">
+      <div class="sidebar-sticky-content">
+        <h3>Categories</h3>
+        <!-- Mobile Category Dropdown -->
+        <div class="category-dropdown-mobile">
+          <button id="category-dropdown-toggle" class="dropdown-toggle">
+            <span id="selected-category-label">All</span>
+            <i data-lucide="chevron-down" class="dropdown-chevron"></i>
+          </button>
+          <div
+            id="category-dropdown-menu"
+            class="dropdown-menu animate-fade-in"
+          >
+            <!-- Categories will be rendered here by JS -->
+          </div>
+        </div>
+        <!-- Desktop Category List -->
+        <div id="category-list-desktop" class="category-list-desktop">
+          <!-- Categories will be rendered here by JS -->
+        </div>
+      </div>
+    </aside>
+
+    <!-- Main Product Grid & Sorting -->
+    <div class="product-main-content">
+      <!-- Sorting Controls -->
+      <div class="product-sorting-controls">
+        <h2 id="product-grid-title">All Products</h2>
+        <div class="sort-select-wrapper">
+          <select id="sort-by-select" class="sort-select">
+            <option value="featured">Featured</option>
+            <option value="price-low">Price: Low to High</option>
+            <option value="price-high">Price: High to Low</option>
+            <option value="rating">Highest Rated</option>
+          </select>
+          <i data-lucide="chevron-down" class="sort-select-icon"></i>
+        </div>
+      </div>
+
+      <!-- Error Message Placeholder -->
+      <div
+        id="products-error"
+        class="products-error-message"
+        style="display: none"
+      >
+        <i data-lucide="alert-circle"></i>
+        <p id="products-error-text"></p>
+      </div>
+
+      <!-- Product Grid -->
+      <div id="product-grid" class="product-grid">
+        <!-- Products will be dynamically rendered here by JS -->
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ========= TOAST NOTIFICATION CONTAINER ========= -->
+<div id="toast-container"></div>

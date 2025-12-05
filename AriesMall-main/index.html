@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Aries Mall - Premium Luxury Shopping</title>
+    <meta
+      name="description"
+      content="Curated luxury shopping experience with premium products"
+    />
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <!-- Stylesheets -->
+    <link rel="stylesheet" href="../CSS/main.css" />
+    <link rel="stylesheet" href="../CSS/responsive.css" />
+    <!-- Lucide Icons Library -->
+    <script src="https://unpkg.com/lucide@latest"></script>
+
+    <!-- Supabase Client Library (Add this line) -->
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+  </head>
+
+  <body class="font-sans antialiased">
+    <!-- ========= FULL PAGE PRE-LOADER ========= -->
+    <div id="pre-loader">
+      <div class="loader-spinner"></div>
+    </div>
+
+    <!-- ========= HEADER (Now a top-level element) ========= -->
+    <header
+      id="main-header"
+      class="sticky top-0 z-50 bg-background border-b border-border"
+    >
+      <!-- Header template will be injected here -->
+    </header>
+
+    <!-- ========= APPLICATION SHELL (Wraps only blur-able content) ========= -->
+    <div id="app-shell" style="visibility: hidden">
+      <!-- ========= DYNAMIC PAGE CONTENT ========= -->
+      <main id="app">
+        <!-- Page content will be rendered here -->
+      </main>
+
+      <!-- ========= FOOTER ========= -->
+      <footer id="main-footer" class="bg-card border-t border-border mt-16">
+        <!-- Footer template will be injected here -->
+      </footer>
+    </div>
+
+    <!-- ========= MENU OVERLAY ========= -->
+    <div id="menu-overlay"></div>
+
+    <!-- ========= TOAST NOTIFICATION CONTAINER ========= -->
+    <div id="toast-container"></div>
+
+    <!-- ========= JAVASCRIPT (Module Type) ========= -->
+    <script type="module" src="./JS/app.js" defer></script>
+  </body>
+</html>

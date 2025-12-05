@@ -1,0 +1,52 @@
+<!-- pages/cart.html -->
+<div class="container animate-fade-in">
+  <div class="cart-header">
+    <h1 class="cart-title">Your Shopping Cart</h1>
+    <a href="/#" class="continue-shopping-link">
+      <span>Continue Shopping</span>
+      <i data-lucide="arrow-right" style="width: 16px; height: 16px"></i>
+    </a>
+  </div>
+
+  <div id="cart-content" style="display: none">
+    <div class="cart-layout">
+      <!-- Cart Items Section -->
+      <div class="cart-items-container" id="cart-items-list">
+        <!-- JS will render cart items here -->
+      </div>
+
+      <!-- Order Summary Section -->
+      <div class="order-summary-container">
+        <div class="order-summary-card">
+          <h2 class="summary-title">Order Summary</h2>
+          <div class="summary-row">
+            <span>Subtotal</span>
+            <span id="summary-subtotal">$0.00</span>
+          </div>
+          <div class="summary-row">
+            <span>Taxes (10%)</span>
+            <span id="summary-taxes">$0.00</span>
+          </div>
+          <div class="summary-row summary-total">
+            <span>Total</span>
+            <span id="summary-total">$0.00</span>
+          </div>
+          <button class="checkout-button">Proceed to Checkout</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Empty Cart Message (shown by default, hidden by JS if cart has items) -->
+  <div id="empty-cart-message">
+    <div class="empty-cart-content">
+      <i data-lucide="shopping-cart" class="empty-cart-icon"></i>
+      <h2 class="empty-cart-title">Your cart is empty</h2>
+      <p class="empty-cart-text">
+        Looks like you haven't added anything to your cart yet. Start exploring
+        our products!
+      </p>
+      <a href="#/" class="empty-cart-button"> Start Shopping </a>
+    </div>
+  </div>
+</div>

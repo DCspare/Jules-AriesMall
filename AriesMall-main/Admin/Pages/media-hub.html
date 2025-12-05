@@ -1,0 +1,146 @@
+<!-- Admin/Pages/media-hub.html -->
+
+<div class="content-wrapper">
+  <!-- NEW: Mobile Tab Switcher (Visible on small screens) -->
+  <div id="media-tab-select-custom" class="custom-dropdown mobile-only">
+    <button id="custom-dropdown-button" class="custom-dropdown__button">
+      <span id="custom-dropdown-label">Image Enhancer (Products)</span>
+      <i data-feather="chevron-down"></i>
+    </button>
+    <ul id="custom-dropdown-menu" class="custom-dropdown__menu hidden">
+      <li data-value="enhancer" class="active">Image Enhancer (Products)</li>
+      <li data-value="uploader">Image Uploader</li>
+      <li data-value="upscaler">Image Upscaler (Slider)</li>
+      <li data-value="history">History</li>
+      <li data-value="guide">Guide</li>
+    </ul>
+  </div>
+
+  <!-- Tab Navigation (Hidden on small screens via CSS) -->
+  <div class="media-tabs">
+    <button class="media-tab-button" data-tab="uploader">
+      <i data-feather="upload-cloud"></i> Image Uploader
+    </button>
+    <!-- NEW: Enhancer Tab for product images -->
+    <button class="media-tab-button active" data-tab="enhancer">
+      <i data-feather="zap"></i> Image Enhancer (Products)
+    </button>
+    <!-- MODIFIED: Renamed to clarify its purpose -->
+    <button class="media-tab-button" data-tab="upscaler">
+      <i data-feather="maximize"></i> Image Upscaler (Slider)
+    </button>
+    <button class="media-tab-button" data-tab="history">
+      <i data-feather="clock"></i> History
+    </button>
+    <button class="media-tab-button" data-tab="guide">
+      <i data-feather="help-circle"></i> Guide
+    </button>
+  </div>
+
+  <!-- Uploader Panel (No change) -->
+  <div id="uploader-panel" class="media-tab-panel">
+    <div id="upload-area" class="upload-area">
+      <div class="upload-area__icon"><i data-feather="upload-cloud"></i></div>
+      <h3 class="upload-area__title">Drag & Drop Your Images Here</h3>
+      <p class="upload-area__subtitle">or click to browse</p>
+      <button id="browse-btn" class="upload-area__button">Browse Files</button>
+      <input type="file" id="file-input" multiple hidden accept="image/*" />
+    </div>
+    <div class="url-upload-area">
+      <p>Or upload from a URL</p>
+      <div class="url-input-group">
+        <input type="text" id="url-input" placeholder="https://example.com/image.jpg" />
+        <button id="add-url-btn"><i data-feather="plus"></i></button>
+      </div>
+    </div>
+    <div id="staging-area" class="staging-area"></div>
+    <div id="upload-progress-container" class="upload-progress-container"></div>
+    <div id="result-container" class="result-container"></div>
+  </div>
+
+  <!-- NEW: Enhancer Panel (Uses generic upscaler panel structure) -->
+  <div id="enhancer-panel" class="media-tab-panel active">
+    <div id="enhancer-container">
+      <div id="enhancer-upload-area" class="upload-area">
+        <div class="upload-area__icon"><i data-feather="image"></i></div>
+        <h3 class="upload-area__title">Add Product Images to Enhance (4K Quality)</h3>
+        <p class="upload-area__subtitle">Drag & drop, browse, or add by URL</p>
+        <button id="enhancer-browse-btn" class="upload-area__button">Browse Files</button>
+        <input type="file" id="enhancer-file-input" multiple hidden accept="image/*" />
+      </div>
+      <div class="url-upload-area">
+        <p>Or add from a URL</p>
+        <div class="url-input-group">
+          <input type="text" id="enhancer-url-input" placeholder="https://example.com/image.jpg" />
+          <button id="enhancer-add-url-btn"><i data-feather="plus"></i></button>
+        </div>
+      </div>
+      <div id="enhancer-staging-area" class="staging-area"></div>
+      <!-- Removed scale selection as enhancement model may not need it -->
+      <div id="enhancer-controls-container" class="upscaler-controls-container" style="display: none; justify-content: center;">
+        <button id="enhancer-start-btn" class="upload-area__button">
+          <i data-feather="play"></i> Start Batch Enhancement
+        </button>
+      </div>
+      <div id="enhancer-progress-container" class="upload-progress-container"></div>
+      <div id="enhancer-result-container" class="result-container"></div>
+    </div>
+  </div>
+
+  <!-- Upscaler Panel (Existing - now for Slider images) -->
+  <!-- Note: We keep the upscaler-panel ID to map to the existing upscaler.js logic -->
+  <div id="upscaler-panel" class="media-tab-panel">
+    <div id="upscaler-container">
+      <div id="upscaler-upload-area" class="upload-area">
+        <div class="upload-area__icon"><i data-feather="image"></i></div>
+        <h3 class="upload-area__title">Add Slider Images to Upscale (2x/4x)</h3>
+        <p class="upload-area__subtitle">Drag & drop, browse, or add by URL</p>
+        <button id="upscaler-browse-btn" class="upload-area__button">Browse Files</button>
+        <input type="file" id="upscaler-file-input" multiple hidden accept="image/*" />
+      </div>
+      <div class="url-upload-area">
+        <p>Or add from a URL</p>
+        <div class="url-input-group">
+          <input type="text" id="upscaler-url-input" placeholder="https://example.com/image.jpg" />
+          <button id="upscaler-add-url-btn"><i data-feather="plus"></i></button>
+        </div>
+      </div>
+      <div id="upscaler-staging-area" class="staging-area"></div>
+      <div id="upscaler-controls-container" class="upscaler-controls-container" style="display: none;">
+        <div class="upscaler-control-group">
+          <label for="upscaler-scale-select">Upscale Factor:</label>
+          <select id="upscaler-scale-select">
+            <option value="2">2x</option>
+            <option value="4">4x</option>
+          </select>
+        </div>
+        <button id="upscaler-start-btn" class="upload-area__button">
+          <i data-feather="play"></i> Start Batch Upscaling
+        </button>
+      </div>
+      <div id="upscaler-progress-container" class="upload-progress-container"></div>
+      <div id="upscaler-result-container" class="result-container"></div>
+    </div>
+  </div>
+
+  <!-- Guide Panel -->
+  <div id="guide-panel" class="media-tab-panel">
+    <div class="guide-content">
+      <!-- Content will be loaded here by JS -->
+      <div class="content-loader"><div class="preloader-spinner"></div></div>
+    </div>
+  </div>
+
+  <!-- History Panel -->
+  <div id="history-panel" class="media-tab-panel">
+    <div class="pm-header">
+        <h2 class="pm-title">Media History</h2>
+        <button id="clear-history-btn" class="upload-area__button upload-area__button--secondary" style="font-size: 0.875rem; padding: 0.5rem 1rem;">
+            <i data-feather="trash-2"></i> Clear History
+        </button>
+    </div>
+    <div id="history-list" class="history-list">
+        <!-- JS will render list here -->
+    </div>
+</div>
+</div>

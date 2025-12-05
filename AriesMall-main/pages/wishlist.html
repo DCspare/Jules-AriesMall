@@ -1,0 +1,28 @@
+<!-- pages/wishlist.html -->
+<div class="container animate-fade-in">
+  <div class="cart-header">
+    <h1 class="cart-title">Your Wishlist</h1>
+    <a href="/#" class="continue-shopping-link">
+      <span>Continue Shopping</span>
+      <i data-lucide="arrow-right" style="width: 16px; height: 16px"></i>
+    </a>
+  </div>
+
+  <!-- Wishlist Grid -->
+  <div id="wishlist-grid" class="product-grid" style="display: none">
+    <!-- Wishlist items will be rendered here by JS/wishlist.js -->
+  </div>
+
+  <!-- Empty Wishlist Message -->
+  <div id="empty-wishlist-message">
+    <div class="empty-cart-content">
+      <i data-lucide="heart" class="empty-cart-icon"></i>
+      <h2 class="empty-cart-title">Your wishlist is empty</h2>
+      <p class="empty-cart-text">
+        Looks like you haven't liked any items yet. Tap the heart icon on
+        products to save them here!
+      </p>
+      <a href="#/" class="empty-cart-button">Start Exploring</a>
+    </div>
+  </div>
+</div>

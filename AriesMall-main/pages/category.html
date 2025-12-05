@@ -1,0 +1,61 @@
+<!-- pages/category.html -->
+<div class="container search-results-container">
+  <header class="search-header">
+    <h1 id="category-title">Loading Category...</h1>
+    <p id="category-product-count">Loading products...</p>
+  </header>
+
+  <!-- NEW: Filter and Sort Controls -->
+  <div class="category-controls">
+    <div class="filter-group">
+      <label for="sort-select">Sort by:</label>
+      <div class="sort-select-wrapper">
+        <select id="sort-select" class="sort-select">
+          <option value="default">Default</option>
+          <option value="price-asc">Price: Low to High</option>
+          <option value="price-desc">Price: High to Low</option>
+          <option value="rating-desc">Highest Rated</option>
+        </select>
+        <i
+          data-lucide="chevrons-up-down"
+          class="sort-select-icon"
+          style="width: 16px; height: 16px"
+        ></i>
+      </div>
+    </div>
+    <div class="filter-group price-filter">
+      <label>Price Range:</label>
+      <div class="price-range-inputs">
+        <input
+          type="number"
+          id="min-price"
+          placeholder="Min"
+          class="price-input"
+        />
+        <span>-</span>
+        <input
+          type="number"
+          id="max-price"
+          placeholder="Max"
+          class="price-input"
+        />
+      </div>
+    </div>
+  </div>
+
+  <div id="category-grid" class="product-grid">
+    <!-- Product card skeletons will be injected here initially -->
+    <!-- Category products will be rendered here by JS/category.js -->
+  </div>
+
+  <div id="no-products-message" style="display: none">
+    <div class="empty-cart-content">
+      <i data-lucide="search-x" class="empty-cart-icon"></i>
+      <h2 class="empty-cart-title">No Products Found</h2>
+      <p class="empty-cart-text">
+        No products matched your current filters. Try adjusting your price range
+        or clearing the filters.
+      </p>
+    </div>
+  </div>
+</div>

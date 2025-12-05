@@ -1,0 +1,180 @@
+<!-- Admin/Pages/product-manager.html -->
+<div class="content-wrapper">
+  <!-- Tab Navigation -->
+  <div class="media-tabs">
+    <button class="media-tab-button active" data-tab="products">
+      <i data-feather="package"></i> Products
+    </button>
+    <button class="media-tab-button" data-tab="slides">
+      <i data-feather="image"></i> Slides
+    </button>
+  </div>
+
+  <!-- Products Panel -->
+  <div id="products-panel" class="media-tab-panel active">
+    <div class="pm-header">
+      <h2 class="pm-title">Product Manager</h2>
+      <!-- Search Bar -->
+      <div class="pm-search-container">
+        <i data-feather="search" class="pm-search-icon"></i>
+        <input type="text" id="product-search-input" class="pm-search-input" placeholder="Search by name or category...">
+      </div>
+      <button id="add-product-btn" class="upload-area__button">
+        <i data-feather="plus"></i> Add Product
+      </button>
+    </div>
+    <!-- Desktop Table View -->
+    <div class="pm-table-wrapper">
+      <table class="product-table">
+        <thead>
+          <tr>
+            <th>Image</th>
+            <th>Name</th>
+            <th>Brand</th> <!-- NEW COLUMN -->
+            <th>Category</th>
+            <th>Price</th>
+            <th>Actions</th>
+          </tr>
+        </thead>
+        <tbody id="product-table-body">
+          <tr>
+            <td colspan="6"><div class="content-loader"><div class="preloader-spinner"></div></div></td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    <!-- Mobile Card View -->
+    <div class="pm-mobile-grid" id="product-mobile-grid">
+      <!-- Products will be loaded here by JavaScript -->
+    </div>
+  </div>
+
+  <!-- Slides Panel (Unchanged) -->
+  <div id="slides-panel" class="media-tab-panel">
+    <div class="pm-header">
+      <h2 class="pm-title">Slide Manager</h2>
+      <button id="add-slide-btn" class="upload-area__button">
+        <i data-feather="plus"></i> Add Slide
+      </button>
+    </div>
+    <!-- Desktop Table View -->
+    <div class="pm-table-wrapper">
+      <table class="slide-table">
+        <thead>
+          <tr>
+            <th>Image</th>
+            <th>Title</th>
+            <th>Button Text</th>
+            <th>Status</th>
+            <th>Actions</th>
+          </tr>
+        </thead>
+        <tbody id="slide-table-body">
+          <!-- Slides will be loaded here by JavaScript -->
+        </tbody>
+      </table>
+    </div>
+    <!-- Mobile Card View -->
+    <div class="pm-mobile-grid" id="slide-mobile-grid">
+      <!-- Slides will be loaded here by JavaScript -->
+    </div>
+  </div>
+</div>
+
+<!-- Add/Edit Product Modal (UPDATED) -->
+<div id="product-modal" class="modal-overlay hidden">
+  <div class="modal-content">
+    <div class="modal-header">
+      <h3 id="modal-title">Add New Product</h3>
+      <button id="close-modal-btn" class="modal-close-btn">&times;</button>
+    </div>
+    <form id="product-form" class="modal-form">
+      <input type="hidden" id="product-id" name="id">
+      
+      <div class="form-group">
+        <label for="product-name">Product Name (Model)</label>
+        <input type="text" id="product-name" name="name" required>
+      </div>
+      
+      <div class="form-grid">
+        <div class="form-group">
+          <label for="product-brand">Brand Name</label>
+          <input type="text" id="product-brand" name="brand" required placeholder="e.g., Bajaj, Lazer">
+        </div>
+        <div class="form-group">
+          <label for="product-category">Category</label>
+          <input type="text" id="product-category" name="category" required placeholder="e.g., Ceiling Fans, Refrigerators">
+        </div>
+        <div class="form-group">
+          <label for="product-price">Price</label>
+          <input type="number" id="product-price" name="price" step="0.01" required>
+        </div>
+        <div class="form-group">
+          <label for="product-warranty">Warranty</label>
+          <input type="text" id="product-warranty" name="warranty">
+        </div>
+      </div>
+      
+      <div class="form-group">
+        <label for="product-description">Description</label>
+        <textarea id="product-description" name="description" rows="3"></textarea>
+      </div>
+
+      <!-- Separated Image Fields -->
+      <p class="form-section-title">Product Images</p>
+      <div class="form-group">
+        <label for="product-image-main">Main Image URL (Card Thumbnail)</label>
+        <input type="url" id="product-image-main" name="image_main" placeholder="https://...">
+      </div>
+      <div class="form-group">
+        <label for="product-images-gallery">Gallery Images (comma-separated)</label>
+        <textarea id="product-images-gallery" name="images_gallery" rows="2" placeholder="https://..., https://..."></textarea>
+      </div>
+
+      <p class="form-section-title">Features</p>
+      <div class="form-group">
+        <label for="product-features">Features (comma-separated)</label>
+        <textarea id="product-features" name="features" rows="3"></textarea>
+      </div>
+      
+      <div class="modal-footer">
+        <button type="button" id="cancel-btn" class="upload-area__button upload-area__button--secondary">Cancel</button>
+        <button type="submit" class="upload-area__button">Save Product</button>
+      </div>
+    </form>
+  </div>
+</div>
+
+<!-- Add/Edit Slide Modal (Unchanged) -->
+<div id="slide-modal" class="modal-overlay hidden">
+  <div class="modal-content">
+    <div class="modal-header">
+      <h3 id="slide-modal-title">Add New Slide</h3>
+      <button id="close-slide-modal-btn" class="modal-close-btn">&times;</button>
+    </div>
+    <form id="slide-form" class="modal-form">
+      <input type="hidden" id="slide-id" name="id" />
+      <p class="form-section-title">Text Content</p>
+      <div class="form-group"><label for="slide-title">Title (Optional)</label><input type="text" id="slide-title" name="title" placeholder="e.g., Elegant & Modern Furniture" /></div>
+      <div class="form-group"><label for="slide-description">Description (Optional)</label><textarea id="slide-description" name="description" rows="2" placeholder="e.g., Transform your space with..."></textarea></div>
+      <p class="form-section-title">Button Content</p>
+      <div class="form-grid">
+        <div class="form-group"><label for="slide-button_text">Button Text (Optional)</label><input type="text" id="slide-button_text" name="button_text" placeholder="e.g., View Furniture" /></div>
+        <div class="form-group"><label for="slide-button_link">Button Link (Optional)</label><input type="text" id="slide-button_link" name="button_link" placeholder="e.g., #/category/furniture" /></div>
+      </div>
+      <p class="form-section-title">Image URLs</p>
+      <div class="form-group"><label for="slide-image_url_desktop">Desktop Background Image URL</label><input type="url" id="slide-image_url_desktop" name="image_url_desktop" placeholder="https://... (e.g., 1920x1080)" /></div>
+      <div class="form-group"><label for="slide-image_url_mobile">Mobile Background Image URL</label><input type="url" id="slide-image_url_mobile" name="image_url_mobile" placeholder="https://... (e.g., 800x1080)" /></div>
+      <div class="form-group"><label for="slide-thumbnail_url">Thumbnail Image URL</label><input type="url" id="slide-thumbnail_url" name="thumbnail_url" placeholder="https://... (e.g., 200x120)" /></div>
+      <p class="form-section-title">Display Options</p>
+      <div class="form-grid">
+        <div class="form-group"><label for="slide-show_overlay">Show Dark Overlay?</label><select id="slide-show_overlay" name="show_overlay"><option value="true">Yes (for text-based slides)</option><option value="false">No (if image has built-in text)</option></select></div>
+        <div class="form-group"><label for="slide-is_active">Status</label><select id="slide-is_active" name="is_active" required><option value="true">Active (Show on site)</option><option value="false">Inactive (Hidden)</option></select></div>
+      </div>
+      <div class="modal-footer">
+        <button type="button" id="cancel-slide-btn" class="upload-area__button upload-area__button--secondary">Cancel</button>
+        <button type="submit" class="upload-area__button">Save Slide</button>
+      </div>
+    </form>
+  </div>
+</div>

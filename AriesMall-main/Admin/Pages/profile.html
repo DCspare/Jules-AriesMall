@@ -1,0 +1,30 @@
+<!-- Admin/Pages/profile.html -->
+<div class="content-wrapper">
+    <div class="profile-header-admin">
+        <h1>Admin Profile</h1>
+        <p>Manage your account settings and log out of the panel.</p>
+    </div>
+    
+    <div class="profile-details-card">
+        <h2>Administrator Details</h2>
+        
+        <div class="detail-row">
+            <span class="detail-label">Status</span>
+            <!-- Redesigned badge structure -->
+            <span id="admin-status" class="status-badge status-active">
+                <i data-feather="check-circle" class="status-icon"></i> 
+                Online (Admin)
+            </span>
+        </div>
+        
+        <div class="detail-row">
+            <span class="detail-label">Email</span>
+            <span id="admin-email" class="detail-value">Loading...</span>
+        </div>
+
+        <button id="admin-logout-btn" class="logout-button-admin button-danger">
+            <i data-feather="log-out"></i>
+            Sign Out
+        </button>
+    </div>
+</div>

@@ -1,0 +1,336 @@
+/* ========= RESPONSIVE STYLESHEET FOR ARIES MALL ========= */
+
+/* Note: This file should be linked AFTER main.css in your HTML */
+/* ========= PROFILE PAGE RESPONSIVE OVERRIDES ========= */
+@media (max-width: 767px) {
+  /* Hide the desktop sidebar */
+  .profile-sidebar {
+    display: none;
+  }
+
+  /* Show the mobile dropdown */
+  .profile-nav-mobile-dropdown {
+    display: block;
+  }
+
+  /* Show the wishlist badge only on mobile view */
+  #profile-wishlist-badge {
+    display: inline-flex;
+  }
+}
+
+/* ========= 4. LAYOUT & UTILITY CLASSES (Responsive) ========= */
+@media (min-width: 640px) {
+  .container {
+    padding-left: 1.5rem;
+    padding-right: 1.5rem;
+  }
+}
+
+/* ========= 5. HEADER STYLES (Responsive & UPDATED) ========= */
+@media (min-width: 640px) {
+  .header-logo-text {
+    font-size: 1.125rem;
+  }
+}
+
+@media (min-width: 768px) {
+  .header-container {
+    padding-left: 1.5rem;
+    padding-right: 1.5rem;
+  }
+  .header-logo-text {
+    font-size: 1.25rem;
+  }
+
+  /* --- FIX: ADDED THIS BLOCK FOR SPACING --- */
+  .header-main {
+    justify-content: flex-start; /* Align items to the start */
+    gap: 4rem; /* Adds a large, explicit gap between the logo and the nav links */
+  }
+  /* --- END FIX --- */
+
+  /* Hide mobile-specific elements on desktop */
+  .mobile-actions,
+  .header-nav-mobile {
+    display: none !important;
+  }
+
+  /* Show desktop content wrapper and style it */
+  .header-desktop-content {
+    display: flex;
+    align-items: center;
+    gap: 1.5rem;
+    flex-grow: 1; /* Allow it to take up the remaining space */
+    justify-content: space-between; /* Pushes nav and actions apart */
+  }
+
+  .header-nav-desktop {
+    display: flex;
+    align-items: center;
+    gap: 2.5rem; /* Increased gap between nav items */
+    font-weight: 500;
+    font-size: 0.9rem; /* Standardized font size */
+  }
+
+  .header-nav-desktop a:hover {
+    color: var(--primary);
+  }
+
+  .header-actions-desktop {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+  }
+}
+
+
+/* ========= 6. FOOTER STYLES (Responsive) ========= */
+@media (min-width: 768px) {
+  .footer-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  .footer-bottom {
+    flex-direction: row;
+  }
+}
+@media (min-width: 1024px) {
+  .footer-grid {
+    grid-template-columns: repeat(6, 1fr);
+  }
+  .footer-grid > div:first-child {
+    grid-column: span 2 / span 2;
+  }
+}
+
+/* ========= 7. HERO SLIDER STYLES (Responsive) ========= */
+@media (min-width: 768px) {
+  .hero-bg-desktop {
+    display: block;
+  }
+  .hero-bg-mobile {
+    display: none;
+  }
+}
+
+@media (max-width: 767px) {
+  .hero-slider-section {
+    height: 75vh;
+  }
+  .hero-thumbnails-container {
+    gap: 0.5rem;
+    overflow-x: auto;
+    justify-content: flex-start;
+    padding-left: 1rem;
+    padding-right: 1rem;
+  }
+  .hero-thumbnail-item {
+    width: 80px;
+    height: 80px;
+    flex-shrink: 0;
+  }
+}
+
+/* ========= 8. HOME PAGE PRODUCT STYLES (Responsive) ========= */
+@media (min-width: 768px) {
+  .product-grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+@media (min-width: 1024px) {
+  .product-grid {
+    grid-template-columns: repeat(4, 1fr);
+  }
+  .product-browse-layout {
+    grid-template-columns: 280px 1fr;
+    gap: 3rem;
+  }
+}
+
+/* ========= 9. PRODUCT CARD STYLES (Responsive) ========= */
+@media (max-width: 767px) {
+  .product-card-badge {
+    font-size: 0.55rem;
+  }
+}
+
+/* ========= 13. CART PAGE STYLES (Responsive) ========= */
+@media (min-width: 1024px) {
+  .cart-header {
+    flex-direction: row;
+    align-items: center;
+  }
+  .cart-title {
+    margin: 0;
+  }
+  .cart-layout {
+    grid-template-columns: 2fr 1fr;
+    align-items: flex-start;
+  }
+}
+
+/* ========= 14. PROFILE PAGE STYLES (Responsive) ========= */
+@media (min-width: 768px) {
+  .profile-layout {
+    grid-template-columns: 1fr 3fr;
+  }
+}
+
+/* ========= 15. RESPONSIVE VISIBILITY HELPERS ========= */
+@media (max-width: 767px) {
+  .mobile-only {
+    display: block;
+  }
+  .desktop-only {
+    display: none;
+  }
+}
+
+
+/* ========= 16. PRODUCT DETAIL PAGE STYLES (Responsive CORRECTED) ========= */
+@media (min-width: 640px) {
+  .features-list {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (min-width: 768px) {
+  .product-detail-layout {
+    /* Standard 4fr/5fr split */
+    grid-template-columns: 4fr 5fr; 
+    align-items: flex-start;
+    gap: 3rem;
+  }
+  .product-gallery-container {
+    position: sticky;
+    top: 6rem;
+  }
+  .product-image-carousel-wrapper,
+  .carousel-indicators,
+  .mobile-sticky-bar {
+    display: none;
+  }
+  .product-desktop-gallery {
+    display: flex;
+  }
+  
+  /* Desktop Adjustments for Info Box */
+  .product-info-container {
+    padding-top: 0; 
+  }
+  .product-title {
+    font-size: 3rem; 
+  }
+  .product-price {
+    font-size: 3rem; 
+  }
+  
+  /* CORRECTION: Ensure meta is correctly formatted on desktop */
+  .product-meta {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 1.5rem;
+      border-bottom: none; /* Remove border line from main.css */
+      padding-bottom: 0;
+  }
+  
+  /* Push rating/brand to the start of the meta section */
+  .product-rating {
+      margin-left: 0;
+  }
+  
+  /* Ensure details sections look good */
+  .details-section-title {
+      font-size: 1.75rem;
+  }
+  
+  /* Ensure product actions remain at the bottom of the column */
+  .product-actions {
+      margin-top: auto; 
+  }
+}
+
+@media (max-width: 767px) {
+  #main-product-actions {
+    display: none;
+  }
+
+  .mobile-sticky-bar {
+    display: flex;
+  }
+}
+
+/* ========= 17. SEARCH RESULTS PAGE STYLES (Responsive) ========= */
+@media (min-width: 768px) {
+  .search-header h1 {
+    font-size: 2.25rem;
+  }
+}
+
+/* ========= 18. CATEGORY PAGE CONTROLS (Responsive) ========= */
+@media (min-width: 768px) {
+  .category-controls {
+    flex-direction: row;
+    align-items: center;
+    gap: 2rem;
+  }
+}
+
+/* ========= 20. RELATED PRODUCTS SECTION STYLES (Responsive) ========= */
+@media (min-width: 768px) {
+  .related-products-title {
+    font-size: 2.25rem;
+    text-align: left;
+  }
+}
+
+/* ========= 21. PROFILE PAGE RESPONSIVE FIXES ========= */
+
+/* On mobile devices (tablets and below) */
+@media (max-width: 767px) {
+  /* Reduce the padding inside the main profile card to give content more space */
+  .profile-card {
+    padding: 1rem;
+  }
+  .profile-card h2 {
+    font-size: 1.25rem;
+    margin-bottom: 1rem;
+  }
+
+  /* Specifically target the product grid inside the profile page's wishlist view */
+  .profile-main-content .product-grid {
+    /* Change from a 2-column to a 1-column grid on small screens */
+    grid-template-columns: 1fr;
+    gap: 1rem;
+  }
+}
+
+/* On small mobile devices */
+@media (max-width: 480px) {
+  .profile-main-content .product-grid {
+    /* You could also use a 2-column grid on very small screens if you prefer */
+    /* grid-template-columns: repeat(2, 1fr); */
+    /* gap: 0.75rem; */
+  }
+
+  /* Adjust product card font sizes inside the profile page for a better fit */
+  .profile-main-content .product-card-info h3 {
+    font-size: 0.875rem;
+  }
+  .profile-main-content .product-card-price {
+    font-size: 1rem;
+  }
+  .profile-main-content .product-card-add-btn {
+    font-size: 0.75rem;
+    padding: 0.25rem 0.5rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .auth-card {
+    padding: 1.5rem;
+  }
+}
+

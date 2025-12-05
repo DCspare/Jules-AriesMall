@@ -1,0 +1,62 @@
+<!-- pages/profile.html -->
+<div class="container profile-container animate-fade-in">
+  <!-- Page Header -->
+  <div class="profile-header">
+    <h1>My Account</h1>
+    <p>Welcome back, <strong id="profile-user-name">User</strong>!</p>
+  </div>
+
+  <div class="profile-layout">
+    <!-- ========= NEW: MOBILE DROPDOWN NAVIGATION ========= -->
+    <div class="profile-nav-mobile-dropdown">
+      <button id="profile-dropdown-toggle" class="dropdown-toggle-button">
+        <span id="profile-dropdown-label">Profile</span>
+        <i data-lucide="chevron-down" class="dropdown-chevron"></i>
+      </button>
+      <div id="profile-dropdown-menu" class="dropdown-menu-content">
+        <a href="#" class="profile-nav-link active" data-view="profile"
+          >Profile</a
+        >
+        <a href="#" class="profile-nav-link" data-view="orders"
+          >Order History</a
+        >
+        <a href="#" class="profile-nav-link" data-view="wishlist">
+          Wishlist
+          <!-- Badge placeholder -->
+          <span class="badge" id="profile-wishlist-badge"></span>
+        </a>
+        <a href="#" class="profile-nav-link" data-view="settings">Settings</a>
+      </div>
+    </div>
+
+    <!-- ========= DESKTOP SIDEBAR NAVIGATION ========= -->
+    <aside class="profile-sidebar">
+      <nav id="profile-nav" class="profile-nav">
+        <!-- FIX: Updated links with data-view attributes for JS control -->
+        <a href="#" class="profile-nav-link active" data-view="profile">
+          <i data-lucide="user"></i>
+          <span>Profile</span>
+        </a>
+        <a href="#" class="profile-nav-link" data-view="orders">
+          <i data-lucide="package"></i>
+          <span>Order History</span>
+        </a>
+        <a href="#" class="profile-nav-link" data-view="wishlist">
+          <i data-lucide="heart"></i>
+          <span>Wishlist</span>
+        </a>
+        <!-- This link is still a placeholder but follows the new pattern -->
+        <a href="#" class="profile-nav-link" data-view="settings">
+          <i data-lucide="settings"></i>
+          <span>Settings</span>
+        </a>
+      </nav>
+    </aside>
+
+    <!-- Main Content -->
+    <!-- FIX: This is now a dynamic container for different views -->
+    <main id="profile-main-content" class="profile-main-content">
+      <!-- Content (Profile Info or Order History) will be rendered here by profile.js -->
+    </main>
+  </div>
+</div>

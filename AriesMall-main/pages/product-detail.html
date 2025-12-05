@@ -1,0 +1,173 @@
+<!-- pages/product-detail.html -->
+<div class="container product-detail-container">
+  <!-- Loading Skeleton Structure -->
+  <div id="product-detail-skeleton" class="product-detail-layout">
+    <div class="product-image-skeleton animate-shimmer"></div>
+    <div class="product-info-skeleton">
+      <div
+        class="skeleton-line animate-shimmer"
+        style="width: 60%; height: 2.5rem; margin-bottom: 1rem"
+      ></div>
+      <div
+        class="skeleton-line animate-shimmer"
+        style="width: 30%; height: 1rem; margin-bottom: 2rem"
+      ></div>
+      <div
+        class="skeleton-line animate-shimmer"
+        style="width: 40%; height: 2rem; margin-bottom: 1.5rem"
+      ></div>
+      <div
+        class="skeleton-line animate-shimmer"
+        style="width: 100%; height: 1rem; margin-bottom: 0.75rem"
+      ></div>
+      <div
+        class="skeleton-line animate-shimmer"
+        style="width: 100%; height: 1rem; margin-bottom: 0.75rem"
+      ></div>
+      <div
+        class="skeleton-line animate-shimmer"
+        style="width: 80%; height: 1rem; margin-bottom: 2rem"
+      ></div>
+      <div
+        class="skeleton-line animate-shimmer"
+        style="width: 100%; height: 3rem; border-radius: 0.375rem"
+      ></div>
+    </div>
+  </div>
+
+  <!-- Actual Product Content (Initially hidden) -->
+  <div id="product-detail-content" style="display: none">
+    <div class="product-detail-layout animate-fade-in">
+      <!-- Left Column: Image Gallery -->
+      <div class="product-gallery-container">
+        <!-- Mobile Carousel -->
+        <div class="mobile-only">
+          <div class="product-image-carousel-wrapper">
+            <div id="mobile-image-carousel" class="product-image-carousel">
+              <!-- JS will populate this -->
+            </div>
+          </div>
+          <div id="carousel-indicators" class="carousel-indicators">
+            <!-- JS will populate this -->
+          </div>
+        </div>
+
+        <!-- Desktop Gallery -->
+        <div class="desktop-only product-desktop-gallery">
+          <div id="desktop-thumbnails" class="product-thumbnails">
+            <!-- JS will populate this -->
+          </div>
+          <div class="product-main-image-wrapper">
+            <img
+              id="product-main-image"
+              src=""
+              alt="Product Image"
+              class="product-main-image"
+            />
+            <div class="zoom-magnifier"></div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Right Column: Product Info & Actions -->
+      <div class="product-info-container">
+        <div class="product-meta">
+          <span id="product-brand" class="product-brand-tag"></span>
+          <!-- NEW: Brand Display -->
+          <span id="product-category" class="product-category-badge"></span>
+          <div class="product-rating">
+            <i data-lucide="star" class="star-icon"></i>
+            <span id="product-rating-value"></span>
+          </div>
+        </div>
+
+        <h1 id="product-name" class="product-title"></h1>
+        <p id="product-price" class="product-price"></p>
+        <p id="product-description" class="product-description"></p>
+
+        <div id="main-product-actions" class="product-actions">
+          <div class="quantity-control detail-quantity">
+            <button
+              id="quantity-decrease"
+              class="quantity-btn"
+              aria-label="Decrease quantity"
+            >
+              -
+            </button>
+            <span id="quantity-value" class="quantity-value">1</span>
+            <button
+              id="quantity-increase"
+              class="quantity-btn"
+              aria-label="Increase quantity"
+            >
+              +
+            </button>
+          </div>
+          <button id="add-to-cart-btn" class="add-to-cart-button">
+            <i
+              data-lucide="shopping-cart"
+              style="width: 20px; height: 20px"
+            ></i>
+            <span>Add to Cart</span>
+          </button>
+          <button
+            id="add-to-wishlist-btn"
+            class="wishlist-button"
+            aria-label="Add to wishlist"
+          >
+            <i data-lucide="heart" style="width: 20px; height: 20px"></i>
+          </button>
+        </div>
+
+        <!-- Additional Details Sections (MOVED HERE) -->
+        <div id="product-additional-details" class="product-additional-details">
+          <!-- JS will populate this -->
+        </div>
+      </div>
+    </div>
+
+    <!-- Related Products Section -->
+    <section
+      id="related-products-section"
+      class="related-products-section"
+      style="display: none"
+    >
+      <h2 class="related-products-title">You Might Also Like</h2>
+      <div id="related-products-grid" class="product-grid">
+        <!-- JS will populate this with product cards -->
+      </div>
+    </section>
+  </div>
+</div>
+
+<!-- Sticky "Add to Cart" bar for Mobile -->
+<div id="mobile-sticky-bar" class="mobile-sticky-bar mobile-only">
+  <div class="quantity-control detail-quantity">
+    <button
+      id="sticky-quantity-decrease"
+      class="quantity-btn"
+      aria-label="Decrease quantity"
+    >
+      -
+    </button>
+    <span id="sticky-quantity-value" class="quantity-value">1</span>
+    <button
+      id="sticky-quantity-increase"
+      class="quantity-btn"
+      aria-label="Increase quantity"
+    >
+      +
+    </button>
+  </div>
+  <button id="sticky-add-to-cart-btn" class="add-to-cart-button">
+    <span>Add to Cart</span>
+  </button>
+  <!-- NEW WISHLIST BUTTON ADDED HERE -->
+  <button
+    id="sticky-wishlist-btn"
+    class="wishlist-button"
+    aria-label="Add to wishlist"
+  >
+    <i data-lucide="heart" style="width: 20px; height: 20px"></i>
+  </button>
+</div>

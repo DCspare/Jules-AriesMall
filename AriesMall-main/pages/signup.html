@@ -1,0 +1,53 @@
+<!-- pages/signup.html -->
+<div class="auth-container">
+  <div class="auth-card animate-fade-in">
+    <h1 class="auth-title">Create an Account</h1>
+    <p class="auth-subtitle">Join Aries Mall to discover exclusive products.</p>
+    <form id="signup-form" class="auth-form" novalidate>
+      <div
+        id="auth-error-message"
+        class="auth-error"
+        style="display: none"
+      ></div>
+      <div class="form-group">
+        <label for="full_name" class="form-label">Full Name</label>
+        <input
+          type="text"
+          id="full_name"
+          name="full_name"
+          class="form-input"
+          placeholder="John Doe"
+        />
+        <div class="form-error-message" id="full_name-error"></div>
+      </div>
+      <div class="form-group">
+        <label for="email" class="form-label">Email Address</label>
+        <input
+          type="email"
+          id="email"
+          name="email"
+          class="form-input"
+          placeholder="you@example.com"
+        />
+        <div class="form-error-message" id="email-error"></div>
+      </div>
+      <div class="form-group">
+        <label for="password" class="form-label">Password</label>
+        <input
+          type="password"
+          id="password"
+          name="password"
+          class="form-input"
+          placeholder="At least 8 characters"
+        />
+        <div class="form-error-message" id="password-error"></div>
+      </div>
+      <button type="submit" class="auth-button">
+        <span>Create Account</span>
+      </button>
+    </form>
+    <p class="auth-link">
+      Already have an account? <a href="#/login">Sign in</a>
+    </p>
+  </div>
+</div>

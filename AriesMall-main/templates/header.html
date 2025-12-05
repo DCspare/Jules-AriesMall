@@ -1,0 +1,146 @@
+<!-- templates/header.html -->
+<div class="container header-container">
+  <div class="header-main">
+    <!-- Logo (Visible on all screen sizes) -->
+    <a href="#/" class="header-logo">
+      <div class="header-logo-icon"><span>AM</span></div>
+      <span class="header-logo-text">Aries Mall</span>
+    </a>
+
+    <!-- Desktop Content Wrapper (Hidden on Mobile) -->
+    <div class="header-desktop-content">
+      <nav class="header-nav-desktop">
+        <!-- CATEGORY LINKS INJECTED HERE -->
+        <div id="desktop-category-links" class="dynamic-category-links">
+          <!-- JS/ui.js will populate this -->
+        </div>
+        <a href="#/contact">Contact</a>
+      </nav>
+
+      <div class="header-actions-desktop">
+        <form id="desktop-search-form" class="search-container">
+          <i data-lucide="search" class="icon" style="width: 20px; height: 20px"></i>
+          <input
+            type="text"
+            placeholder="Search..."
+            class="search-input"
+            id="desktop-search-input"
+          />
+          <button
+            type="button"
+            class="search-clear-btn"
+            id="desktop-search-clear"
+            aria-label="Clear search"
+          >
+            <i data-lucide="x" style="width: 16px; height: 16px"></i>
+          </button>
+        </form>
+        <button
+          id="theme-toggle-desktop"
+          class="header-action-button"
+          aria-label="Toggle theme"
+        >
+          <i data-lucide="moon"></i>
+        </button>
+        <a
+          href="/#/profile/wishlist"
+          id="desktop-wishlist-link"
+          class="header-action-button relative"
+          aria-label="Wishlist"
+        >
+          <i data-lucide="heart" style="width: 20px; height: 20px"></i>
+        </a>
+        <a
+          href="#/cart"
+          id="desktop-cart-link"
+          class="header-action-button relative"
+          aria-label="Shopping Cart"
+        >
+          <i data-lucide="shopping-cart" style="width: 20px; height: 20px"></i>
+        </a>
+        <div class="relative">
+          <button
+            id="auth-menu-toggle"
+            class="header-action-button"
+            aria-label="User Account"
+          >
+            <i data-lucide="user" style="width: 20px; height: 20px"></i>
+          </button>
+          <div id="auth-dropdown-container"></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Mobile Actions (Hidden on Desktop) -->
+    <div class="mobile-actions">
+      <button
+        id="mobile-search-toggle"
+        class="header-action-button"
+        aria-label="Toggle Search"
+      >
+        <i data-lucide="search"></i>
+      </button>
+      <button
+        id="mobile-menu-toggle"
+        class="header-action-button"
+        aria-label="Toggle Menu"
+      >
+        <i data-lucide="menu"></i>
+      </button>
+    </div>
+  </div>
+
+  <!-- Mobile-only overlays/panels -->
+  <div id="mobile-search-bar" class="mobile-search-bar">
+    <form id="mobile-search-form" class="search-container" style="width: 100%">
+      <i data-lucide="search" class="icon"></i>
+      <input
+        type="text"
+        placeholder="Search for products..."
+        class="search-input"
+        id="mobile-search-input"
+      />
+    </form>
+    <button id="mobile-search-close" class="text-button">Cancel</button>
+  </div>
+
+  <nav id="mobile-nav" class="header-nav-mobile">
+    <div class="mobile-menu-header">
+      <h3 class="mobile-menu-title">Menu</h3>
+      <button
+        id="mobile-menu-close"
+        class="header-action-button"
+        aria-label="Close Menu"
+      >
+        <i data-lucide="x"></i>
+      </button>
+    </div>
+
+    <!-- Container for top and bottom links -->
+    <div class="mobile-menu-links">
+      <!-- Top section with categories and regular links -->
+      <div class="mobile-menu-scrollable-links">
+        <div id="mobile-category-links">
+          <!-- JS/ui.js will populate this -->
+        </div>
+        <a href="#/contact">Contact</a>
+      </div>
+
+      <!-- Bottom section with utility links, pushed to the bottom -->
+      <div class="mobile-menu-utility-links">
+        <button id="theme-toggle-mobile">
+          <i data-lucide="moon"></i>
+          <span id="mobile-theme-text">Dark Mode</span>
+        </button>
+        <a href="#/cart" id="mobile-cart-link">
+          <i data-lucide="shopping-cart"></i>
+          <span>Cart</span>
+        </a>
+        <a href="#/login" id="mobile-auth-link">
+          <i data-lucide="user"></i>
+          <span>Sign In</span>
+        </a>
+      </div>
+    </div>
+  </nav>
+</div>

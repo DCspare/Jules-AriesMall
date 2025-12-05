@@ -1,0 +1,224 @@
+/* --- Tablet & Desktop Styles --- */
+@media (min-width: 768px) {
+  .admin-layout {
+    display: grid;
+    grid-template-columns: 250px 1fr;
+    grid-template-rows: auto 1fr;
+    grid-template-areas:
+      "sidebar main"
+      "sidebar main";
+  }
+
+  .main-wrapper {
+    grid-area: main;
+    width: auto; /* Override mobile width */
+    margin-left: 0; /* Override mobile margin */
+  }
+
+  .admin-sidebar {
+    position: sticky; /* Keep sidebar visible on scroll */
+    transform: translateX(0); /* Always visible */
+    grid-area: sidebar;
+    height: 100vh;
+    height: 100dvh; /* Use dvh for consistency */
+  }
+
+  .admin-header {
+    position: relative; /* No longer sticky on desktop */
+    padding: 0 2rem;
+    gap: 10px;
+  }
+
+  .admin-content {
+    padding: 2rem;
+  }
+
+  .admin-footer {
+    padding: 1rem 2rem;
+  }
+
+  /* Hide mobile-only elements */
+  .menu-toggle,
+  .sidebar-overlay,
+  .mobile-only { /* Hide mobile-only custom dropdown and other elements */
+    display: none;
+  }
+  
+  /* Show desktop tabs on desktop */
+  .media-tabs {
+    display: flex;
+  }
+
+  /* Adjust toast position for larger screens */
+  #toast-container {
+    bottom: 2rem;
+    right: 2rem;
+  }
+  
+  /* Ensure the mobile card grid is hidden when tables are active */
+  .pm-mobile-grid {
+      display: none !important;
+  }
+}
+
+/* Fix: Make Modals Scrollable on Mobile */
+@media (max-width: 768px) {
+  /*
+    * We rely on the base CSS (.modal-overlay, .modal-content, .modal-form)
+    * to handle max-height and internal scrolling.
+    * We just ensure inputs don't trigger zooming.
+    */
+
+  /* Fix for iOS zoom on input focus */
+  .form-group input, 
+  .form-group select, 
+  .form-group textarea {
+    font-size: 16px; 
+  }
+
+  /* --- MEDIA HUB MOBILE LAYOUT: CUSTOM DROPDOWN STYLES --- */
+  
+  /* NEW FIX: Hide desktop tabs when the mobile-only custom dropdown is present */
+  .content-wrapper:has(.custom-dropdown.mobile-only) .media-tabs {
+    display: none;
+  }
+
+  /* Show the mobile only elements (Custom Dropdown is one of them) */
+  .mobile-only {
+    display: block !important; 
+  }
+
+  /* Custom Dropdown Container */
+  .custom-dropdown {
+    width: 100%;
+    position: relative;
+    margin-bottom: 1.5rem;
+  }
+
+  /* Custom Dropdown Button */
+  .custom-dropdown__button {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    padding: 0.75rem 1rem;
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    background-color: var(--card); /* Base for button */
+    color: var(--foreground);
+    font-size: 1rem;
+    cursor: pointer;
+    font-family: var(--font-sans);
+    font-weight: 500;
+    transition: all 0.2s ease;
+  }
+  .custom-dropdown__button:hover {
+      background-color: var(--background);
+  }
+  .custom-dropdown__button i {
+      width: 16px;
+      height: 16px;
+      transition: transform 0.2s ease;
+      margin-left: 0.5rem;
+      color: var(--muted-foreground);
+  }
+  .custom-dropdown.open .custom-dropdown__button i {
+      transform: rotate(180deg);
+  }
+  
+  /* Custom Dropdown Menu (The Options List) */
+  .custom-dropdown__menu {
+    position: absolute;
+    top: 100%; /* Position below the button */
+    left: 0;
+    right: 0;
+    z-index: 10;
+    list-style: none;
+    padding: 0.5rem 0;
+    margin-top: 0.25rem;
+    background-color: var(--card); /* The menu background */
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    box-shadow: var(--shadow-md);
+    overflow: hidden;
+    animation: fadeIn 0.15s ease-out;
+  }
+  
+  .custom-dropdown__menu.hidden {
+      display: none;
+  }
+
+  .custom-dropdown__menu li {
+    padding: 0.75rem 1rem;
+    cursor: pointer;
+    color: var(--foreground);
+    font-size: 1rem;
+    font-weight: 500;
+    transition: background-color 0.15s;
+    line-height: 1.2;
+  }
+  
+  .custom-dropdown__menu li:hover {
+    background-color: var(--background); /* Hover state */
+  }
+  
+  .custom-dropdown__menu li.active {
+    background-color: var(--primary-glow);
+    color: var(--primary);
+    font-weight: 600;
+  }
+
+
+  /* --- Product Manager Mobile Layout (Remaining styles) --- */
+  .pm-header {
+    justify-content: flex-start;
+    align-items: flex-start;
+    flex-direction: column;
+    gap: 1rem; 
+  }
+  .pm-title {
+    width: 100%;
+    order: 1; 
+    margin-bottom: 0;
+  }
+  
+  .pm-search-container {
+    max-width: 100%;
+    order: 2; 
+    flex-grow: 1;
+  }
+  #add-product-btn, #add-slide-btn {
+    width: 100%;
+    order: 3;
+  }
+  
+  /* Hide the desktop table view */
+  .pm-table-wrapper {
+    display: none;
+  }
+  
+  /* Show the mobile card grid view */
+  .pm-mobile-grid {
+    display: flex;
+    flex-direction: column; /* Stack cards vertically, full width */
+  }
+
+  /* Show button text in mobile actions */
+  .action-btn i {
+    width: 14px;
+    height: 14px;
+  }
+  .action-btn span {
+      display: inline;
+  }
+  /* Remove padding from action buttons in mobile grid for a cleaner look */
+  .pm-card .action-btn {
+      padding: 0.6rem 1rem;
+  }
+  
+  /* Ensure action buttons are wide enough when containing text */
+  .product-card__actions .action-btn,
+  .slide-card__actions .action-btn {
+      min-width: 90px;
+  }
+}
